@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebApplicationProvaNexo.Models.Produto>
+
+@{
+    ViewBag.Title = "Lista de Produtos";
+}
+
+<h2>Lista de Produtos</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Disponivel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClienteId)
+        </th>
+        <th>Ações</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Disponivel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClienteId)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ProdutoId }) |
+            @Html.ActionLink("Ver", "Details", new { id=item.ProdutoId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.ProdutoId })
+        </td>
+    </tr>
+}
+
+</table>
